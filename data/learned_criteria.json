@@ -1,0 +1,71 @@
+{
+  "last_updated": "2026-10-12 19:45:03",
+  "source_mode": "Institutional Quantitative & Screener.in Empirical Research Framework",
+  "market_regime_note": "In the NSE/BSE < ₹50 universe, 80%+ of stocks suffer from illiquidity, circular debt, or governance traps. To target a realistic 6-month rerating, the engine prioritizes 'Quality Value + Turnaround Momentum': high unpledged promoter skin-in-the-game, positive trailing earnings, low P/BV asset backing, manageable debt, and verifiable corporate catalysts (order book wins, debt resolution, or sector tailwinds).",
+  "screener_in_query": "Current price < 50 AND Market Capitalization > 50 AND Return on equity > 10 AND Return on capital employed > 10 AND Debt to equity < 0.75 AND Promoter holding > 35 AND Pledged percentage < 10 AND Price to book value < 2.5 AND EPS > 0 AND Volume 1month average > 50000",
+  "rules": [
+    {
+      "category": "Governance & Promoter",
+      "name": "Promoter Skin-in-the-Game & Unpledged Holding",
+      "metric_key": "promoter_holding_pct",
+      "ideal_threshold": "Promoter Holding > 40% (or strong institutional/FII/DII backing) with Pledged Shares < 5%",
+      "weight_pct": 18.0,
+      "rationale": "In Indian micro/penny caps, promoter conviction is the #1 safeguard against pump-and-dump operators. High promoter pledging risks forced lender liquidation during market dips."
+    },
+    {
+      "category": "Valuation",
+      "name": "Trailing P/E vs Sector & Earnings Yield",
+      "metric_key": "pe_ratio",
+      "ideal_threshold": "0 < P/E < 22x (Positive EPS; discounted relative to Nifty Smallcap 250 median)",
+      "weight_pct": 15.0,
+      "rationale": "Eliminates loss-making story stocks while avoiding value traps. A profitable company trading at 8x–18x P/E has room for multiple expansion over 6 months."
+    },
+    {
+      "category": "Valuation",
+      "name": "Price-to-Book Value (Asset Backing)",
+      "metric_key": "pb_ratio",
+      "ideal_threshold": "0.3x <= P/BV <= 2.2x (Book Value per share provides downside floor)",
+      "weight_pct": 12.0,
+      "rationale": "Penny stocks in infrastructure, banking, power, and manufacturing need tangible net worth (Book Value) backing so you aren't paying purely for speculative hope."
+    },
+    {
+      "category": "Profitability",
+      "name": "Return on Equity (ROE) & Capital Efficiency",
+      "metric_key": "roe_pct",
+      "ideal_threshold": "ROE > 12% and Positive Net Profit Margin (> 5%)",
+      "weight_pct": 15.0,
+      "rationale": "Confirms the business generates genuine economic returns on shareholder equity rather than surviving on equity dilution."
+    },
+    {
+      "category": "Profitability",
+      "name": "Revenue & Quarterly Profit Growth Trajectory",
+      "metric_key": "profit_growth_pct",
+      "ideal_threshold": "YoY Revenue Growth > 10% and YoY/QoQ Earnings Growth > 15%",
+      "weight_pct": 12.0,
+      "rationale": "A 6-month target price requires near-term earnings momentum (upcoming 1–2 quarterly earnings releases) to trigger institutional and retail re-rating."
+    },
+    {
+      "category": "Solvency & Cashflow",
+      "name": "Debt-to-Equity & Liquidity Safety",
+      "metric_key": "debt_to_equity",
+      "ideal_threshold": "Debt-to-Equity < 0.6x (for non-financials) & Positive Operating Cash Flow",
+      "weight_pct": 13.0,
+      "rationale": "High interest burdens destroy sub-₹50 companies. Low leverage or active deleveraging turns operating cash flow directly into bottom-line EPS growth."
+    },
+    {
+      "category": "Technical & Momentum",
+      "name": "6-Month Relative Strength, RSI & Volume Accumulation",
+      "metric_key": "technical_momentum",
+      "ideal_threshold": "Price > 50-DMA or 200-DMA support, RSI between 42–68 (not overbought), Avg Daily Volume > 1,00,000 shares",
+      "weight_pct": 15.0,
+      "rationale": "Avoids 'falling knives' and illiquid upper/lower-circuit operator traps. Healthy delivery/trading volume ensures easy entry and exit."
+    }
+  ],
+  "red_flags_to_reject": [
+    "Share Price >= ₹50.00 (Outside user's strict < ₹50 penny stock universe)",
+    "Average Daily Volume < 25,000 shares (Severe illiquidity / circuit-trap risk)",
+    "Deeply negative Book Value coupled with shrinking revenues (Insolvency / NCLT wipeout risk)",
+    "Auditor adverse opinions, SEBI show-cause notices, or >50% Promoter Pledge",
+    "RSI > 82 on low fundamental backing (Parabolic pump phase)"
+  ]
+}
