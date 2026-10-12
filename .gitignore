@@ -1,0 +1,25 @@
+# Python byte-compiled / caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables & secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Runtime cache & local data logs
+data/latest_scan_result.json
+data/daily_picks_history.json
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
